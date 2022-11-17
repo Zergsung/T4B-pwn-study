@@ -208,10 +208,6 @@ p.sendline(b'19')
 p.interactive()
 ```
 
-<<<<<<< HEAD
-![Untitled](/3%EC%A3%BC%EC%B0%A8/OOB/%5BDreamhack%5D%20out_of_bound%20%E1%84%91%E1%85%AE%E1%86%AF%E1%84%8B%E1%85%B5/Untitled.png)
-=======
-![Untitled](../OOB/%5BDreamhack%5D%20out_of_bound%20%E1%84%91%E1%85%AE%E1%86%AF%E1%84%8B%E1%85%B5/Untitled.png)
->>>>>>> ef62dfa (수정 안되나?)
+![Untitled](/3%EC%A3%BC%EC%B0%A8/IMG/oob/oob.png)
 
 쉘이 따진 걸 볼 수 있다.

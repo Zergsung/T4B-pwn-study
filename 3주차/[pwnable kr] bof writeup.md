@@ -2,17 +2,17 @@
 
 ---
 
-![Untitled](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled.png)
+![Untitled](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof0.png)
 
 리눅스에 wget명령어로 bof파일을 받아서 gdb-gef를 사용하여 디버깅 해보았다.
 
-![스택에 0xdeadbeef를 넣어주고 func라는 함수를 실행한다.](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%201.png)
+![스택에 0xdeadbeef를 넣어주고 func라는 함수를 실행한다.](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof1.png)
 
 스택에 0xdeadbeef를 넣어주고 func라는 함수를 실행한다.
 
 한번 func 함수를 disas 명령어로 확인해보자
 
-![Untitled](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%202.png)
+![Untitled](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof2.png)
 
 24번째, 35번째 줄에서 함수를 호출하고(어떤 함수인지는 아직 모름) cmp부분에서 0 xcafebabe랑 비교하는 걸 볼 수 있다.
 
@@ -49,17 +49,17 @@ gets에서 내가 입력한 문자열이랑 key에 들어있는 0 xdeadbeef값�
 
 aaaa를 입력했다.
 
-![브레이크 포인트에 멈춘 상태](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%203.png)
+![브레이크 포인트에 멈춘 상태](//3%EC%A3%BC%EC%B0%A8/IMG/bof/bof3.png)
 
 브레이크 포인트에 멈춘 상태
 
-![Untitled](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%204.png)
+![Untitled](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof4.png)
 
 find 명령어로 입력한 값이 저장된 위치를 찾았다.
 
 내가 입력한 0x61616161(aaaa)로부터 0 xdeadbeef가 얼마큼 떨어져 있는지 알아내기 위해 x/20wx 0 xffffd2 dc 명령어를 사용했다
 
-![gets로 받는 부분부터 13만큼 떨어져있다](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%205.png)
+![gets로 받는 부분부터 13만큼 떨어져있다](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof5.png)
 
 gets로 받는 부분부터 13만큼 떨어져있다
 
@@ -75,11 +75,11 @@ aaaa를 넣었을 때 한 칸이 0x61616161로 찼으니까 총 4x13=52만큼 �
 > 찾아보니 pwndbg에 더 편한 기능이 있었다. distance라는 명령어인데 각 값의 주소를 입력해주면 오프셋를 구해준다.
 > 
 
-![각 값의 주소를 구해주고](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%206.png)
+![각 값의 주소를 구해주고](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof6.png)
 
 각 값의 주소를 구해주고
 
-![명령어를 사용하면](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%207.png)
+![명령어를 사용하면](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof7.png)
 
 명령어를 사용하면
 
@@ -119,6 +119,6 @@ p.interactive()
 
 이제 완성된 페이로드를 p.sendline으로 자동 입력이 되게 하고, p.interactive로 내가 직접 상호작용 할 수 있게 하면 완성이다. 한번 실행시켜보자.
 
-![플래그를 읽을 수 있었다](/3%EC%A3%BC%EC%B0%A8/Pwnable.kr%20BOF/%5Bpwnable%20kr%5D%20bof%20writeup/Untitled%208.png)
+![플래그를 읽을 수 있었다](/3%EC%A3%BC%EC%B0%A8/IMG/bof/bof8.png)
 
 플래그를 읽을 수 있었다
